@@ -1,0 +1,75 @@
+*{
+    margin: 0px;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+.todoCard{
+   width: 600px;
+    border-radius: 5px;
+    box-shadow: 0px 4px 2px rgba(0,0,0,0.2 );
+    margin: auto;
+    position: relative;
+    top: 100px;
+    padding: 20px;
+    background-color: rgb(236, 239, 239);
+   
+}
+
+#taskInput{
+    padding: 10px;
+    border-radius: 5px;
+    width: 50%;
+    
+}
+
+#taskInput:focus{
+    outline: none;
+    border: 2px solid rgb(6, 150, 6)
+}
+
+#addTaskButton, #deleteTaskButton {
+    padding: 12px;
+    border-radius: 5px;
+    border: none;
+    background-color: rgb(6, 150, 6);
+    color: white;
+   cursor: pointer;
+}
+
+#deleteTaskButton, button{
+    background-color: rgb(255, 0, 0);
+    padding: 12px;
+    border-radius: 5px;
+    border: none;
+}
+
+button:hover{
+    cursor: pointer;
+}
+h1{
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.todoWrapper{
+    margin: auto;
+}
+
+ul{
+    padding: 20px;
+    padding-left: 40px
+}
+
+li{
+    padding: 10px;
+}
+
+li:hover{
+    cursor: pointer;
+}
+
+.completed{
+    text-decoration: line-through;
+    color: gray;
+}
