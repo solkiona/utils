@@ -1,0 +1,53 @@
+<!-- Navbar -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://kit.fontawesome.com/475ea9865d.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    
+    <header class="bg-white dark:bg-gray-900 shadow-md p-4 flex justify-between items-center relative z-50">
+        <a href="#" class="text-xl font-bold text-gray-800 dark:text-white">Brand</a>
+        <!-- Hamburger Button -->
+        <button id="menu-toggle" class="md:hidden p-2 rounded focus:outline-none">
+            <i id="menu-icon" class="fas fa-bars text-2xl text-gray-800 dark:text-white"></i>
+        </button>
+    </header>
+    
+    <!-- Overlay (Closes Menu When Clicked) -->
+    <div id="overlay" class="fixed inset-0 bg-black opacity-50 hidden z-40"></div>
+    
+    <!-- Navigation Menu (Vertical Sidebar) -->
+    <nav id="mobile-menu" class="fixed top-0 left-0 w-64 h-full bg-white dark:bg-gray-800 shadow-md p-4 transform -translate-x-full transition-transform duration-300 md:hidden z-50">
+        <ul class="flex flex-col space-y-4">
+            <li><a href="#" class="text-gray-800 dark:text-white hover:text-blue-600">Home</a></li>
+            <li><a href="#" class="text-gray-800 dark:text-white hover:text-blue-600">About</a></li>
+            <li><a href="#" class="text-gray-800 dark:text-white hover:text-blue-600">Services</a></li>
+            <li><a href="#" class="text-gray-800 dark:text-white hover:text-blue-600">Contact</a></li>
+        </ul>
+    </nav>
+    
+    <!-- JavaScript for Toggle -->
+    <script>
+    const menuToggle = document.getElementById('menu-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const menuIcon = document.getElementById('menu-icon');
+    const overlay = document.getElementById('overlay');
+    
+    toggleMenu = () => {
+        mobileMenu.classList.toggle('-translate-x-full');
+        overlay.classList.toggle('hidden');
+        menuIcon.classList.toggle('fa-bars');
+        menuIcon.classList.toggle('fa-times');
+    };
+    
+    menuToggle.addEventListener('click', toggleMenu);
+    overlay.addEventListener('click', toggleMenu);
+    </script>
+
+</body>
+</html>

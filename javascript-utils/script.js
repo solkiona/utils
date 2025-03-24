@@ -81,6 +81,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
     taskContainer.style.padding='10px';
 
     btn.addEventListener('click', ()=>{
+        localStorage.removeItem(key);
         taskContainer.remove();
     })
 

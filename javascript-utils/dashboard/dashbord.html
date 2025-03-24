@@ -1,0 +1,283 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Newsjour TUI</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://kit.fontawesome.com/475ea9865d.js" crossorigin="anonymous"></script>
+    <style>
+        body{
+            background: linear-gradient(to bottom left, rgba(37, 37, 183, 0.104), rgba(255, 255, 255, 0.989));
+        }
+    </style>
+</head>
+<body>
+<div class="flex h-screen max-h-fit overflow-y-auto relative">
+    <!-- Sidebar -->
+     <div class="w-20 md:block " >
+         <aside id="sidebar" class="bg-white shadow-md p-4 h-full w-20 transition-all duration-300 overflow-hidden  absolute top-0 left-0 z-10">
+            <div class="flex items-center mb-4">
+                <img src="favicon.png" alt="Newsjour" class="w-[40px] h-[40px]">
+            </div> 
+            <div class="flex items-center justify-between">
+                 <!-- Sidebar Title -->
+                 <h2 id="sidebar-title" class="text-2xl font-bold hidden">Newsjour</h2>
+     
+                 <!-- Toggle Button -->
+                 <button id="menu-toggle" class="p-2 bg-white rounded shadow-md">
+                     <i id="menu-icon" class="fas fa-bars text-xl"></i> <!-- Default is bars icon -->
+                 </button>
+             </div>
+     
+             <nav class="mt-6 relative h-[80vh] border border-red-600 overflow-auto">
+                 <ul>
+                     <li class="mb-2  hover:bg-blue-200 rounded p-2">
+                         <a href="{%url 'dashboard'%}" class="flex gap-2 items-center">
+                             <i class="fa-solid fa-house text-lg"></i>
+                             <span href="#" class="hidden sidebar-text ml-3">Home </span>
+                         </a>
+                     </li>
+                     <li class="mb-2  hover:bg-blue-200 rounded p-2">
+                         <a href="{% url 'product_list'%}" class="flex gap-2 items-center">
+                             <i class="fas fa-box text-lg"></i>
+                             <span class="hidden sidebar-text ml-3 ">
+                                Products
+
+                             </span>
+                         </a>
+                     </li>
+                     <li class="mb-2  hover:bg-blue-200 rounded p-2">
+                         <a href="{%url 'category_list'%}" class="flex gap-2 items-center">
+                             <i class="fas fa-list text-lg"></i>
+                             <span class="hidden sidebar-text ml-3">Categories</span >
+                         </a>
+                     </li>
+                     <li class="mb-2  hover:bg-blue-200 rounded p-2">
+                         <a href="{%url 'supplier_list'%}" class="flex gap-2 items-center">
+                             <i class="fas fa-truck text-lg"></i>
+                             <span  class="hidden sidebar-text ml-3">Suppliers</span >
+                         </a>
+                     </li>
+                     <li class="mb-2  hover:bg-blue-200 rounded p-2">
+                         <a href="#" class="flex gap-2 items-center">
+                             <i class="fas fa-chart-line text-lg"></i>
+                             <span class="hidden sidebar-text ml-3">Sales</span >
+                         </a>
+                     </li>
+
+                         <li class="mb-2  hover:bg-blue-200 rounded p-2 absolute bottom-12 w-full">
+                            <a href="#" class="flex gap-2 items-center">
+                                <i class="fa-solid fa-gear text-2xl"></i>
+                                <span class="hidden sidebar-text ml-3">Settings</span >
+                            </a>
+                        </li>
+                         <li class="mb-2   rounded absolute bottom-0 w-full">
+                            <a href="#" class="flex gap-2 items-center relative rounded h-9 hover:bg-blue-200 p-2">
+                                <span class="w-6 h-6 rounded-full bg-red-600  absolute flex items-center justify-center overflow-hidden"><img src="{%static 'images/default.jpg'%}"/></span>
+                                <span class="hidden sidebar-text ml-10">User</span >
+                            </a>
+                        </li>
+                 </ul>
+             </nav>
+         </aside>
+     </div>
+
+    <!-- Main Content -->
+    <main class="w-full p-[20px] lg:p-2 border border-red-900 overflow-y-auto ">
+
+        
+  
+    <div class="container mx-auto flex flex-col lg:flex-row mt-4 max-w-10xl  ">
+       
+        <!-- Left box -->
+        <aside class="w-full lg:w-1/4 lg:px-2 lg:px-6 border border-green-600">
+            <div class="w-full mb-6">
+       
+
+                <!--- Search Bar -->
+                <div class="flex  w-full">
+                    <input type="text" class=" w-full rounded-xl bg-white-100 p-4" placeholder="Search"/>
+                    <i class="icon-search1"></i>
+                </div>
+        
+            
+            </div>
+            <nav class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-4 mb-6">
+                <ul class="space-y-4">
+                    <li><a href="#" class="block p-2 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700">🏠 Home</a></li>
+                    <li><a href="#" class="block p-2 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700">🔎 Explore</a></li>
+                    <li><a href="#" class="block p-2 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700">📩 Messages</a></li>
+                    <li><a href="#" class="block p-2 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700">🔔 Notifications</a></li>
+                    <li><a href="#" class="block p-2 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700">⚙️ Settings</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="w-full  lg:w-1/2  overflow-y-auto">
+            <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-4">
+                <h2 class="text-xl font-bold mb-4">Latest News</h2>
+                <!-- Sample Post -->
+                <div class="border-b border-gray-300 dark:border-gray-700 pb-4 mb-4">
+
+                    <div class="w-full h-auto aspect-w-16 aspect-h-9">
+                        <img src="image2.png" alt="News Image" class="w-full h-auto rounded-lg">
+                    </div>
+                    <h3 class="text-lg font-semibold">Exciting Updates on Newsjour!</h3>
+                    <p class="text-gray-700 dark:text-gray-300">Stay informed with the latest breaking news.</p>
+                    <div class="flex space-x-4 mt-2 text-gray-600 dark:text-gray-400">
+                        <button>👍 Like</button>
+                        <button>💬 Comment</button>
+                        <button>🔄 Share</button>
+                    </div>
+                    <span class="text-sm text-gray-500 dark:text-gray-400">2 hours ago</span>
+                </div>
+            <!-- Sample Post -->
+            <div class="border-b border-gray-300 dark:border-gray-700 pb-4 mb-4">
+                <div class="w-full h-auto aspect-w-16 aspect-h-9">
+                    <img src="image1.png" alt="News Image" class="w-full h-auto rounded-lg">
+                </div>
+                <h3 class="text-lg font-semibold">Exciting Updates on Newsjour!</h3>
+                <p class="text-gray-700 dark:text-gray-300">Stay informed with the latest breaking news.</p>
+                <div class="flex space-x-4 mt-2 text-gray-600 dark:text-gray-400">
+                    <button>👍 Like</button>
+                    <button>💬 Comment</button>
+                    <button>🔄 Share</button>
+                </div>
+                <span class="text-sm text-gray-500 dark:text-gray-400">2 hours ago</span>
+            </div>
+            <!-- Sample Post -->
+            <div class="border-b border-gray-300 dark:border-gray-700 pb-4 mb-4">
+                <div class="w-full h-auto aspect-w-16 aspect-h-9">
+                    <img src="image1.png" alt="News Image" class="w-full h-auto rounded-lg">
+                </div>
+                <h3 class="text-lg font-semibold">Exciting Updates on Newsjour!</h3>
+                <p class="text-gray-700 dark:text-gray-300">Stay informed with the latest breaking news.</p>
+                <div class="flex space-x-4 mt-2 text-gray-600 dark:text-gray-400">
+                    <button>👍 Like</button>
+                    <button>💬 Comment</button>
+                    <button>🔄 Share</button>
+                </div>
+                <span class="text-sm text-gray-500 dark:text-gray-400">2 hours ago</span>
+            </div><!-- Sample Post -->
+            <div class="border-b border-gray-300 dark:border-gray-700 pb-4 mb-4">
+                <div class="w-full h-auto aspect-w-16 aspect-h-9">
+                    <img src="image1.png" alt="News Image" class="w-full h-auto rounded-lg">
+                </div>
+                <h3 class="text-lg font-semibold">Exciting Updates on Newsjour!</h3>
+                <p class="text-gray-700 dark:text-gray-300">Stay informed with the latest breaking news.</p>
+                <div class="flex space-x-4 mt-2 text-gray-600 dark:text-gray-400">
+                    <button>👍 Like</button>
+                    <button>💬 Comment</button>
+                    <button>🔄 Share</button>
+                </div>
+                <span class="text-sm text-gray-500 dark:text-gray-400">2 hours ago</span>
+            </div><!-- Sample Post -->
+            <div class="border-b border-gray-300 dark:border-gray-700 pb-4 mb-4">
+                <div class="w-full h-auto aspect-w-16 aspect-h-9">
+                    <img src="image1.png" alt="News Image" class="w-full h-auto rounded-lg">
+                </div>
+                <h3 class="text-lg font-semibold">Exciting Updates on Newsjour!</h3>
+                <p class="text-gray-700 dark:text-gray-300">Stay informed with the latest breaking news.</p>
+                <div class="flex space-x-4 mt-2 text-gray-600 dark:text-gray-400">
+                    <button>👍 Like</button>
+                    <button>💬 Comment</button>
+                    <button>🔄 Share</button>
+                </div>
+                <span class="text-sm text-gray-500 dark:text-gray-400">2 hours ago</span>
+            </div><!-- Sample Post -->
+            <div class="border-b border-gray-300 dark:border-gray-700 pb-4 mb-4">
+                <div class="w-full h-auto aspect-w-16 aspect-h-9">
+                    <img src="image1.png" alt="News Image" class="w-full h-auto rounded-lg">
+                </div>
+                <h3 class="text-lg font-semibold">Exciting Updates on Newsjour!</h3>
+                <p class="text-gray-700 dark:text-gray-300">Stay informed with the latest breaking news.</p>
+                <div class="flex space-x-4 mt-2 text-gray-600 dark:text-gray-400">
+                    <button>👍 Like</button>
+                    <button>💬 Comment</button>
+                    <button>🔄 Share</button>
+                </div>
+                <span class="text-sm text-gray-500 dark:text-gray-400">2 hours ago</span>
+            </div><!-- Sample Post -->
+            <div class="border-b border-gray-300 dark:border-gray-700 pb-4 mb-4">
+                <div class="w-full h-auto aspect-w-16 aspect-h-9">
+                    <img src="image1.png" alt="News Image" class="w-full h-auto rounded-lg">
+                </div>
+                <h3 class="text-lg font-semibold">Exciting Updates on Newsjour!</h3>
+                <p class="text-gray-700 dark:text-gray-300">Stay informed with the latest breaking news.</p>
+                <div class="flex space-x-4 mt-2 text-gray-600 dark:text-gray-400">
+                    <button>👍 Like</button>
+                    <button>💬 Comment</button>
+                    <button>🔄 Share</button>
+                </div>
+                <span class="text-sm text-gray-500 dark:text-gray-400">2 hours ago</span>
+            </div><!-- Sample Post -->
+            <div class="border-b border-gray-300 dark:border-gray-700 pb-4 mb-4">
+                <div class="w-full h-auto aspect-w-16 aspect-h-9">
+                    <img src="image1.png" alt="News Image" class="w-full h-auto rounded-lg">
+                </div>
+                <h3 class="text-lg font-semibold">Exciting Updates on Newsjour!</h3>
+                <p class="text-gray-700 dark:text-gray-300">Stay informed with the latest breaking news.</p>
+                <div class="flex space-x-4 mt-2 text-gray-600 dark:text-gray-400">
+                    <button>👍 Like</button>
+                    <button>💬 Comment</button>
+                    <button>🔄 Share</button>
+                </div>
+                <span class="text-sm text-gray-500 dark:text-gray-400">2 hours ago</span>
+            </div><!-- Sample Post -->
+            <div class="border-b border-gray-300 dark:border-gray-700 pb-4 mb-4">
+                <div class="w-full h-auto aspect-w-16 aspect-h-9">
+                    <img src="image1.png" alt="News Image" class="w-full h-auto rounded-lg">
+                </div>
+                <h3 class="text-lg font-semibold">Exciting Updates on Newsjour!</h3>
+                <p class="text-gray-700 dark:text-gray-300">Stay informed with the latest breaking news.</p>
+                <div class="flex space-x-4 mt-2 text-gray-600 dark:text-gray-400">
+                    <button>👍 Like</button>
+                    <button>💬 Comment</button>
+                    <button>🔄 Share</button>
+                </div>
+                <span class="text-sm text-gray-500 dark:text-gray-400">2 hours ago</span>
+            </div>
+            
+            </div>
+        
+        </main>
+
+        <!-- Right Sidebar -->
+        <aside class="w-full lg:w-1/4 mt-6 lg:mt-0 lg:px-2 lg:px-6 border border-blue-600">
+            <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-4">
+                <h2 class="text-xl font-bold mb-4">Trending</h2>
+                <ul class="space-y-2">
+                    <li>#NewsjourUpdates</li>
+                    <li>#BreakingNews</li>
+                    <li>#TechTrends</li>
+                    <li>#ViralNow</li>
+                </ul>
+            </div>
+        </aside>
+    </div>
+
+    <!-- Toggle Sidebar Button for Mobile -->
+   
+
+    <!-- Dark Mode Toggle -->
+    <button class="fixed bottom-5 right-5 bg-gray-800 text-white p-2 rounded-full" onclick="toggleDarkMode()"> 🌙 </button>
+
+</main>
+</div>
+
+
+
+
+
+
+
+<script src="dashboard.js"></script>
+
+</body>
+</html>
+
+

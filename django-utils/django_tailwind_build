@@ -1,0 +1,169 @@
+# Setting Up and Building Django Tailwind on an Ubuntu Server
+
+This guide walks you through installing and building **Django Tailwind** on an Ubuntu server, including solutions to common issues like missing `rimraf`, `cross-env`, and `tailwindcss`.
+
+---
+
+## 1. Install Required System Dependencies
+
+Ensure your server has the necessary system dependencies installed:
+
+```bash
+sudo apt update && sudo apt install -y python3 python3-venv python3-pip nodejs npm
+```
+
+Verify installations:
+
+```bash
+python3 --version
+node -v
+npm -v
+```
+
+---
+
+## 2. Create a Virtual Environment and Install Django
+
+```bash
+python3 -m venv venv
+source venv/bin/activate
+pip install django
+```
+
+Verify Django installation:
+
+```bash
+python -m django --version
+```
+
+---
+
+## 3. Install and Configure Django Tailwind
+
+1. Install **django-tailwind**:
+   
+   ```bash
+   pip install django-tailwind
+   ```
+
+2. Add `tailwind` to `INSTALLED_APPS` in `settings.py`:
+
+   ```python
+   INSTALLED_APPS = [
+       ...
+       'tailwind',
+       'theme',  # Your Tailwind app
+   ]
+   ```
+
+3. Set your Tailwind app in `settings.py`:
+
+   ```python
+   TAILWIND_APP_NAME = 'theme'
+   ```
+
+4. Run the following command to generate the Tailwind theme structure:
+
+   ```bash
+   python manage.py tailwind init
+   ```
+
+---
+
+## 4. Install Tailwind CSS and Node Modules
+
+Navigate to your Tailwind app’s `static_src` directory:
+
+```bash
+cd theme/static_src
+```
+
+Install `tailwindcss` globally and locally:
+
+```bash
+npm install -g tailwindcss
+npm install tailwindcss
+```
+
+Ensure Tailwind CSS is installed by checking its version:
+
+```bash
+tailwindcss -v
+```
+
+If `tailwindcss` is not found, add it to the system path:
+
+```bash
+export PATH=$PATH:$(npm bin -g)
+```
+
+---
+
+## 5. Install Missing Dependencies (`rimraf`, `cross-env`)
+
+If you encounter errors about missing `rimraf` or `cross-env`, install them manually:
+
+```bash
+npm install rimraf cross-env
+```
+
+---
+
+## 6. Build Tailwind CSS
+
+Run the following command to build Tailwind CSS:
+
+```bash
+python manage.py tailwind build
+```
+
+If you see an error like:
+
+```bash
+Error: spawn tailwindcss ENOENT
+```
+
+Ensure `tailwindcss` is correctly installed and accessible:
+
+```bash
+npx tailwindcss -v
+```
+
+If the error persists, try:
+
+```bash
+npx tailwindcss -i ./src/styles.css -o ../static/css/dist/styles.css --minify
+```
+
+---
+
+## 7. Run the Django Development Server
+
+```bash
+python manage.py runserver
+```
+
+Now your Django project should be running with Tailwind CSS! 🎉
+
+---
+
+## Troubleshooting
+
+### 1. `tailwindcss: command not found`
+- Ensure Tailwind CSS is installed globally and locally.
+- Try `export PATH=$PATH:$(npm bin -g)`
+
+### 2. `rimraf: not found`
+- Run `npm install rimraf` inside `theme/static_src`
+
+### 3. `cross-env: not found`
+- Run `npm install cross-env`
+
+### 4. `spawn tailwindcss ENOENT`
+- Run `npx tailwindcss -v` to verify installation.
+- If missing, reinstall Tailwind: `npm install -g tailwindcss`
+
+---
+
+### ✅ Now your Django app should have Tailwind working on an Ubuntu server!
+

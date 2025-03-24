@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heading, Image, and Content Layout</title>
+    
+    <!-- <link rel="stylesheet" href="styles.css"> -->
+     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        body {
+            background-color: #f4f4f4;
+            height: auto;
+            padding-top: 100px;
+
+        
+        }
+        
+        .container {
+            padding: 50px;
+            max-width: 900px;
+            min-width: 200px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            margin: auto;
+        }
+        
+        .image {
+            width: 100%;
+            height: auto;
+            min-width: 10.5rem;
+        }
+        
+        .content {
+            padding: 20px;
+        }
+        
+        .heading {
+            font-size: 50px;
+            color: auto;
+            margin-bottom: 10px;
+            text-align: left;
+            color: #000000;
+        }
+        
+        .text {
+            font-size: 16px;
+            color: #0a0a0a;
+            line-height: 1.8;
+            text-align: justify;
+            font-weight: 500;
+            
+        }
+
+        .outer{
+            position: relative; 
+            padding: 50px
+        }
+
+      
+
+    .card{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        margin: 20px;
+        padding: 20px, 0;
+        background-color: #f4f4f4;
+        border-radius: 12px;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        width: 400px;
+        margin: 20px auto;
+        /*border: 2px solid red;*/
+        overflow-x: hidden;
+        gap: 10px;
+    }
+    .card-image-container{
+        width: 100%;
+        height: 200px;
+    }
+    .card-image{
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    .card-content{
+        padding: 20px;
+    }
+    .card-heading{
+        font-size: 20px;
+        color: auto;
+        margin-bottom: 10px;
+        text-align: left;
+        color: #000000;
+    }
+    .card-text{
+        font-size: 16px;
+        color: #0a0a0a;
+        line-height: 1.5;
+        text-align: justify;
+        font-weight: 500;
+    }
+
+    @media screen and (max-width: 600px) {
+        .heading {
+            font-size: 1.875rem;
+        }
+        .text{
+            text-align: left;
+        }
+        .container{
+            padding: 20px;
+        }
+        .outer{
+            padding: 15px;
+        }
+        .card{
+            width: 18.7rem;
+        }
+    }
+     </style>
+</head>
+<body>
+    <div class="outer" >
+
+        <div class="container">
+    
+            <h2 class="heading">TECNO CAMON 40 Disrupts Mobile Photography </h2>
+            <img src="https://www.naijanews.com/wp-content/uploads/2025/03/tecno-2.jpg" alt="Image" class="image">
+            <div class="content">
+                
+                <p class="text">
+                    The TECNO CAMON 40 Series is launching, promising a revolution in smartphone photography powered by artificial intelligence (AI). The key feature is AI FlashSnap, a system that anticipates the perfect shot by recognizing motion and adjusting lighting in real-time, allowing users to capture fleeting moments with ease. The series boasts a Sony 50MP Ultra-Sensing Camera designed to optimize light intake, sharpen textures, and deliver natural skin tones even in low-light conditions, rivaling professional-grade lenses. The focus is on simplifying the user experience by removing complexity and using AI to enhance colors, dynamic range, and environmental adaptation for consistently gallery-worthy results. Beyond the CAMON 40 series, TECNO is active with their SPARK 30 Series Transformers Edition launch in Nigeria and celebrating Kelly Rae's Big Brother Naija win highlighting their innovative AI technology. They continue to show commitment by Inspiring Inclusion for International Women's Day and sponsoring AFCON Watch Parties for their SPARK 20 Series.
+    
+            AI Word count: 153
+            Manual Summary
+            “Kelly Rae Wins Big Brother Naija, But TECNO’s AI-Powered Innovation Captures The Hearts Of Fans TECNO Takes AI To Next Level With Latest Ecosystem, Devices [Photos] Inspiring Inclusion: Infinix Celebrates International Women’s Day 2024 From Beats To Victorious Feats – All In The Unforgettable Night Of TECNO SPARK 20 AFCON Watch Party From Goals to Grooves: TECNO’s SPARK 20 AFCON Watch Party Redefines Football Fan Experience! The TECNO CAMON 40 Series is setting a new standard for mobile photography, proving that the perfect shot is no longer about luck—it’s about intelligence, artificial intelligence. But what if your camera didn’t just capture what’s in front of it but anticipated the perfect shot before you even pressed the button? Whether you’re shooting up close or from a distance, this camera doesn’t just capture photos—it creates visual stories that feel alive. Clarity isn’t just about resolution—it’s about precision, depth, and capturing the world exactly as it is. The TECNO CAMON 40 Series offers an exceptional value proposition with its competitive Recommended Retail Prices (RRP):  This is more than an upgrade—it’s a revolution in how we capture and create. Whether it’s a fast-paced street scene, an impromptu laugh, or a breathtaking sunset, your shots now come out exactly as you envisioned them—sharp, balanced, and full of life.
+                </p>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="card">
+
+        <div class="card-image-container">  
+            <img src="https://www.naijanews.com/wp-content/uploads/2025/03/tecno-2.jpg" class="card-image" alt="">
+        </div>
+        <div class="card-content">
+            <h2 class="card-heading">TECNO CAMON 40 Disrupts Mobile Photography </h2>
+            <p class="card-text">The TECNO CAMON 40 Series is launching, promising a revolution in smartphone photography powered by artificial intelligence (AI).</p>
+        </div>
+
+    </div>
+
+    <div class="card">
+
+        <div class="card-image-container">  
+            <img src="https://www.naijanews.com/wp-content/uploads/2025/03/tecno-2.jpg" class="card-image" alt="">
+        </div>
+        <div class="card-content">
+            <h2 class="card-heading">TECNO CAMON 40 Disrupts Mobile Photography </h2>
+            <p class="card-text">The TECNO CAMON 40 Series is launching, promising a revolution in smartphone photography powered by artificial intelligence (AI).</p>
+        </div>
+
+    </div>  
+    
+    <div class="card">
+
+        <div class="card-image-container">  
+            <img src="https://www.naijanews.com/wp-content/uploads/2025/03/tecno-2.jpg" class="card-image" alt="">
+        </div>
+        <div class="card-content">
+            <h2 class="card-heading">TECNO CAMON 40 Disrupts Mobile Photography </h2>
+            <p class="card-text">The TECNO CAMON 40 Series is launching, promising a revolution in smartphone photography powered by artificial intelligence (AI).</p>
+        </div>
+
+    </div>  <div class="card">
+
+        <div class="card-image-container">  
+            <img src="https://www.naijanews.com/wp-content/uploads/2025/03/tecno-2.jpg" class="card-image" alt="">
+        </div>
+        <div class="card-content">
+            <h2 class="card-heading">TECNO CAMON 40 Disrupts Mobile Photography </h2>
+            <p class="card-text">The TECNO CAMON 40 Series is launching, promising a revolution in smartphone photography powered by artificial intelligence (AI).</p>
+        </div>
+
+    </div>  <div class="card">
+
+        <div class="card-image-container">  
+            <img src="https://www.naijanews.com/wp-content/uploads/2025/03/tecno-2.jpg" class="card-image" alt="">
+        </div>
+        
+            <div class="card-content">
+                <h2 class="card-heading">TECNO CAMON 40 Disrupts Mobile Photography </h2>
+                <p class="card-text">The TECNO CAMON 40 Series is launching, promising a revolution in smartphone photography powered by artificial intelligence (AI).</p>
+            </div>
+
+       
+
+    </div>
+</body>
+</html>
