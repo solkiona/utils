@@ -1,0 +1,89 @@
+Data Structures and Algorithm Crash Course
+
+Started Week One: August 13th, 2025
+Week 1: Fundamentals and Arrays
+
+Day 1: Time Complexity and Big O Notation
+Lesson One: Big O notation
+
+when it takes thesame amount of time to execute a program irrespective of the data size is called O(1)
+
+ BigO simply tells how Time scaled with respect to some Input variables
+
+def contains(array, x):
+    for element in array:
+        if element == x:
+            return true
+
+The above function is O(N) where N is the size of the array. This is because the function depends on the size of the array to run. let us assume that element == x at array(N) it will have to read all the inputs of the array until the end
+
+def printPairs(array):
+    for x in array:
+        for y in array
+            print(x,y)
+
+for the example above, it will take O(N**2) this is because we will have to multiply the time it takes to complete the two loops in the function. if takes N times and N times it becomes O(N**2)
+
+FOUR IMPORTANT RULES TO KNOW WITH BIGO
+
+1. If you have different steps in your algorithm, add up those steps.
+
+def something():
+    dostep1()
+    doStep2()
+
+This is becomes O(a+b)
+
+2. Drop Constants 
+
+def minMax1(array):
+    min,max = Null
+
+    for e in array:
+        min = MIN(e,min)
+    
+    for e in array:
+        max = Max(e, max)
+
+def minMax2(array):
+    min,max = Null
+
+    for e in array:
+        min = MIN(e,min)
+        max = max(e,max)
+since it is two steps we add up O(N+N) = O(2N) , but we must drop constants in asymptomatic notations it becomes O(N)
+
+3. Different inputs == different variables 
+
+ def intersectionSize(arrayA, arrayB):
+    count = 0
+    for a in arrayA:
+        for b in arrayB:
+            if a==b
+                count = count + 1
+    
+    return count
+This would be called O(N*M) not just O(N**2). This is because N should be the size of each data 
+
+4. Drop Non-Dominant Terms
+
+def whyWouldIdoThis(array):
+    max = Null
+    for a in array:
+        max = MAX(a, max)
+        print max
+    for a in array:
+        for b in array:
+            print(a,b)
+
+This would originally be O(N + N**2) but in asymptomatic notation where data nears infinity O(N + N**2) == O(N**2). That is. O(N**2)   is more significant compared to only O(N)
+
+O(logn) = x = logn i.e. How many times you need to keep cutting n by two until there is none left
+
+O(nlogn)
+
+Built in Sorting algorithms & HeapSort is generally assumed as O(nlogn)
+
+O(1) -> O(logn) -> O(n) -> O(nlogn) -> O(n**2) -> O(n**3) -> O(2**n) -> O(n! )
+
+Recursions can sometimes be O(2**n)

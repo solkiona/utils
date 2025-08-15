@@ -1,1 +1,42 @@
-We are overwriting the existing text file
+Task 1: Library Management System
+Problem Statement: You're building a library system where users can borrow and return books. Ensure books have a title, author, and available copies. Users should be able to borrow a book if copies are available and return them incrementally.
+
+Task: Create a Book class with:
+
+title, author, and copies attributes.
+A borrow(qty) method that reduces the available copies if enough are available.
+A return_book(qty) method to allow partial returns.
+Expected Output:
+
+book = Book("Python Basics", "John Doe", 3)
+print(book.borrow(2))  # "You borrowed 2 copies of 'Python Basics'. 1 copies remaining."
+print(book.return_book(1))  # "1 copies of 'Python Basics' returned."
+
+
+book_name
+
+// I want to borrow 3 copies of Advanced Engineering Maths
+total copy = 5
+borrowed = 0
+available = total copy - borrowed #5
+
+// Each time I borrow a book  for example (quantity = 2)
+#check: if quantity <= available 
+borrowed = borrowed + quantity 
+available = available - quantity
+print(f"You borrowed {quantity} copies of {book_name}")
+#check: if quantity > available:
+print(f"Sorry you can't borrow more than available copies of {book_name}")
+
+// Each time I return a book for example (quantity = 1)
+#check: if quantity < borrowed:
+borrowed = borrowed - quantity
+available = available + quantity
+print(f"You returned {quantity} copies of {book_name}")
+#check: if borrowed == 0:
+print(f"All copies of {book_name} have been returned")
+#check: if quantity > borrowed:
+print(f"Sorry you can't return more than borrowed copies of {book_name}")
+
+
+account number, name , email, balance, 

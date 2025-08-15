@@ -1,0 +1,29 @@
+criteria to borrow a book
+
+1. The book has to be available
+2. You can only borrow number of available copies of books
+
+procedure 
+
+self.available = copies - self.borrowed
+
+1. check if book is available i.e.
+
+ if qty <= self.available
+ 	self.borrowed += qty
+ 	self.available -= qty
+ 	return f"You borrowed {qty} copies of '{self.title}'. {self.available} copies remaining."
+ return f"You cannot borrow more than available copies"
+
+cirteria to return a book
+
+You have to return only the amount of books you borrowed.
+If you return more quantity of books than you borrowed throw an error 
+
+	if qty <= self.borrowed:
+		self.borrowed -= qty
+		self.available += qty
+
+		if self.borrowed == 0:
+			return f"'{self.title} returned completely"
+		return f"You returned {qty} copies of '{self.title}'.
