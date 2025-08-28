@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard Overview</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://unpkg.com/@headlessui/react@latest/dist/headlessui.umd.production.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/forms@0.4.0/dist/forms.min.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @media (min-width: 1024px) {
+      .chart {
+        max-height: 300px;
+      }
+    }
+  </style>
+</head>
+<body class="bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100">
+  <div class="flex min-h-screen">
+    <!-- Sidebar -->
+    <aside id="sidebar" class="fixed md:static top-0 left-0 z-30 h-full w-64 bg-white dark:bg-gray-800 shadow-lg transform md:translate-x-0 -translate-x-full transition-transform duration-300 ease-in-out">
+      <div class="p-4 border-b border-gray-200 dark:border-gray-700">
+        <h2 class="text-xl font-semibold">Dashboard</h2>
+      </div>
+      <nav class="p-4 space-y-2">
+        <a href="#" class="block px-4 py-2 rounded hover:bg-gray-200 dark:hover:bg-gray-700">Overview</a>
+        <a href="#" class="block px-4 py-2 rounded hover:bg-gray-200 dark:hover:bg-gray-700">Feeds</a>
+        <a href="#" class="block px-4 py-2 rounded hover:bg-gray-200 dark:hover:bg-gray-700">Categories</a>
+        <a href="#" class="block px-4 py-2 rounded hover:bg-gray-200 dark:hover:bg-gray-700">Headlines</a>
+        <a href="#" class="block px-4 py-2 rounded hover:bg-gray-200 dark:hover:bg-gray-700">Votes</a>
+      </nav>
+    </aside>
+
+    <!-- Main content -->
+    <div class="flex-1 flex flex-col w-full">
+      <!-- Top bar -->
+      <header class="bg-white dark:bg-gray-800 p-4 shadow flex justify-between items-center">
+        <button onclick="toggleSidebar()" class="md:hidden text-gray-600 dark:text-gray-300">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/>
+          </svg>
+        </button>
+        <h1 class="text-lg font-bold">Overview</h1>
+      </header>
+
+      <!-- Content -->
+      <main class="p-6 space-y-6">
+        <!-- Metrics Cards -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div class="bg-white dark:bg-gray-800 rounded-xl shadow p-4">
+            <p class="text-gray-600 dark:text-gray-400">Total Feeds</p>
+            <h2 class="text-2xl font-bold">123</h2>
+          </div>
+          <div class="bg-white dark:bg-gray-800 rounded-xl shadow p-4">
+            <p class="text-gray-600 dark:text-gray-400">Categories</p>
+            <h2 class="text-2xl font-bold">10</h2>
+          </div>
+          <div class="bg-white dark:bg-gray-800 rounded-xl shadow p-4">
+            <p class="text-gray-600 dark:text-gray-400">Headlines</p>
+            <h2 class="text-2xl font-bold">450</h2>
+          </div>
+          <div class="bg-white dark:bg-gray-800 rounded-xl shadow p-4">
+            <p class="text-gray-600 dark:text-gray-400">Votes</p>
+            <h2 class="text-2xl font-bold">800</h2>
+          </div>
+        </div>
+
+        <!-- Charts -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow">
+            <h3 class="text-lg font-semibold mb-4">Headlines Per Category</h3>
+            <canvas id="headlinesCategoryChart" class="chart"></canvas>
+          </div>
+
+          <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow">
+            <h3 class="text-lg font-semibold mb-4">Votes Overview</h3>
+            <canvas id="votesChart" class="chart"></canvas>
+          </div>
+
+          <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow lg:col-span-2">
+            <h3 class="text-lg font-semibold mb-4">Headlines Over Time</h3>
+            <canvas id="headlinesOverTimeChart" class="chart"></canvas>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+
+
+  <script>
+    function toggleSidebar() {
+      const sidebar = document.getElementById('sidebar');
+      sidebar.classList.toggle('-translate-x-full');
+
+      if (!sidebar.classList.contains('-translate-x-full')) {
+        document.addEventListener('click', closeSidebarOnClickOutside);
+      } else {
+        document.removeEventListener('click', closeSidebarOnClickOutside);
+      }
+    }
+
+    function closeSidebarOnClickOutside(event) {
+      const sidebar = document.getElementById('sidebar');
+      if (!sidebar.contains(event.target) && !event.target.closest('button[onclick="toggleSidebar()"]')) {
+        sidebar.classList.add('-translate-x-full');
+        document.removeEventListener('click', closeSidebarOnClickOutside);
+      }
+    }
+  </script>
+
+  <script>
+    // Headlines per Category chart
+    new Chart(document.getElementById('headlinesCategoryChart'), {
+      type: 'bar',
+      data: {
+        labels: ['Politics', 'Sports', 'Tech', 'Health'],
+        datasets: [{
+          label: 'Headlines',
+          data: [120, 90, 150, 80],
+          backgroundColor: '#3b82f6'
+        }]
+      },
+      options: { responsive: true, plugins: { legend: { display: false } } }
+    });
+
+    // Votes chart
+    new Chart(document.getElementById('votesChart'), {
+      type: 'doughnut',
+      data: {
+        labels: ['Thumbs Up', 'Thumbs Down'],
+        datasets: [{
+          label: 'Votes',
+          data: [600, 200],
+          backgroundColor: ['#10b981', '#ef4444']
+        }]
+      },
+      options: { responsive: true }
+    });
+
+    // Headlines Over Time chart
+    new Chart(document.getElementById('headlinesOverTimeChart'), {
+      type: 'line',
+      data: {
+        labels: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
+        datasets: [{
+          label: 'Headlines',
+          data: [50, 70, 60, 90, 100, 80, 120],
+          borderColor: '#3b82f6',
+          backgroundColor: 'rgba(59, 130, 246, 0.2)',
+          fill: true
+        }]
+      },
+      options: { responsive: true, plugins: { legend: { display: false } } }
+    });
+  </script>
+</body>
+</html>

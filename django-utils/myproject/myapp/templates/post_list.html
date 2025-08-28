@@ -1,0 +1,40 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Post List</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <header>
+        <h1>My Blog</h1>
+        <nav>
+            <ul>
+                <li><a href="{% url 'post_list' %}">Home</a></li>
+                <li><a href="{% url 'post_create' %}">Create Post</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h2>Posts</h2>
+        {% for post in posts %}
+            <article>
+                <h3><a href="{% url 'post_detail' post.id %}">{{ post.title }}</a></h3>
+                <p>{{ post.content|truncatewords:30 }}</p>
+                <p><small>Published on {{ post.created_at }}</small></p>
+                <p><a href="{% url 'post_update' post.id %}">Edit</a> | <a href="{% url 'post_delete' post.id %}">Delete</a></p>
+            </article>
+        {% empty %}
+            <p>No posts available.</p>
+        {% endfor %}
+    </main>
+
+    <footer>
+        <p>&copy; 2023 My Blog</p>
+    </footer>
+
+    {% block extra_js %}
+    {% endblock %}
