@@ -37,10 +37,12 @@ def passwordChecker( userpasswords: list ) -> str:
         "1234567890", "~`!@#$%^&*()_-+={[]}\|;:',<.>/?"
     ]
     result = set()
-    for pwd in userpasswords:
+    result_dict = { }
+    for count, pwd in enumerate(userpasswords):
         if len(pwd) < 6:
-            print("Weak")
+            #print("Weak")
             result.add("Weak")
+            result_dict[f"pwd {count + 1}"] = "Weak"
         
         if len(pwd) >= 6 or len(pwd) >= 8:
             num = []
@@ -52,12 +54,18 @@ def passwordChecker( userpasswords: list ) -> str:
                 if char in checks[1]:
                     spc.append(char)
             if num and spc:
-                print("Strong")
+                #print("Strong")
                 result.add("Strong")
-                return "Strong"
-           
-            print("Medium")
-            result.add("Medium")
-    return result
+                result_dict[f"pwd {count + 1}"] = "Strong" 
+            else: 
+                result.add("Medium")
+                result_dict[f"pwd {count + 1}"] = "Medium"
+    print(result)
+    print(result_dict)
+    return result_dict
 
-passwordChecker(["tes1&","Solomon*&*","89887887","90dkdkd2@@####"])
+res = passwordChecker(["tes1&","Solomon*&*","89887887","90dkdkd2@@####","weak_password"])
+
+
+for key, value in res.items():
+    print(f"{key}: {value}")
