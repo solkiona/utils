@@ -32,17 +32,19 @@ Use a set to track unique password strengths ({Weak, Medium, Strong}).
 Use a dict/object/map to count how many passwords fall into each category.
 """
 
-def passwordChecker( userpasswords: list ) -> str:
+def passwordChecker( userpasswords: list ) -> dict:
     checks = [
         "1234567890", "~`!@#$%^&*()_-+={[]}\|;:',<.>/?"
     ]
     result = set()
     result_dict = { }
+    count_dict = { }
     for count, pwd in enumerate(userpasswords):
         if len(pwd) < 6:
             #print("Weak")
             result.add("Weak")
             result_dict[f"pwd {count + 1}"] = "Weak"
+            count_dict["Weak"] = count_dict.get("Weak", 0) + 1
         
         if len(pwd) >= 6 or len(pwd) >= 8:
             num = []
@@ -56,13 +58,15 @@ def passwordChecker( userpasswords: list ) -> str:
             if num and spc:
                 #print("Strong")
                 result.add("Strong")
-                result_dict[f"pwd {count + 1}"] = "Strong" 
+                result_dict[f"pwd {count + 1}"] = "Strong"
+                count_dict["Strong"] = count_dict.get("Strong", 0) + 1
             else: 
                 result.add("Medium")
                 result_dict[f"pwd {count + 1}"] = "Medium"
-    print(result)
-    print(result_dict)
-    return result_dict
+                count_dict["Medium"] = count_dict.get("Medium", 0) + 1
+    print(f"set: {result}")
+    print(f"dict: {result_dict}")
+    return count_dict
 
 res = passwordChecker(["tes1&","Solomon*&*","89887887","90dkdkd2@@####","weak_password"])
 
