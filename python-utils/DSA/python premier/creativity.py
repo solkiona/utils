@@ -209,3 +209,25 @@ def factors(n):
         lookup.append(k)
     for f in sorted(lookup):
         yield f
+
+
+def factors_sorted(n):
+    k = 1
+    large = []
+    while k*k < n+1: # O(sqrt(n))
+        if n % k == 0:
+            yield k
+            if k != n//k:
+                large.append (n//k) 
+        k += 1
+    for d in reversed(large): # O(n)
+        yield d
+        
+def Factors(n):
+    import math
+    for k in range(1, int(math.isqrt(n)) + 1): #O(sqrt(n))
+        if n % k == 0: # O(1)
+            yield (k)
+            if k != n//k: #O(1)
+                yield ( n//k )
+                
